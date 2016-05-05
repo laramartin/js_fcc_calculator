@@ -1,38 +1,38 @@
+var result = "";
+var str1 = result;
+//var empty = "0";
+
+var operations = {
+  "dot": ".", "percent": "%", "multp": "*", "divide": "/", "minus": "-", "plus": "+"
+}
+
 $(document).ready(function() {
 
-  var input = [];
+  function display(input){
+    console.log("result: " + result);
+    var html = "<p>" + result + "</p>";
+    $(".displayResult").html(html);
+  }
 
-  $( "#zero" ).click(function() {
-    input.push(0);
-  });
-  $( "#one" ).click(function() {
-    input.push(1);
-  });
-  $( "#two" ).click(function() {
-    input.push(2);
-  });
-  $( "#three" ).click(function() {
-    alert( "3" );
-  });
-  $( "#four" ).click(function() {
-    alert( "4" );
-  });
-  $( "#five" ).click(function() {
-    alert( "5" );
-  });
-  $( "#six" ).click(function() {
-    alert( "6" );
-  });
-  $( "#seven" ).click(function() {
-    alert( "7" );
-  });
-  $( "#eight" ).click(function() {
-    alert( "8" );
-  });
-  $( "#nine" ).click(function() {
-    alert( "9" );
+  $("button").click(function() {
+    var val = $(this).attr("value");
+    //val = String(val);
+    console.log("val: " + val);
+    if (!isNaN(val)){
+      result = result.concat(String(val));
+    } else if (val in operations) {
+      result = result.concat(operations[val]);
+    } else if(val === "ac"){
+      result = "";
+    } else if (val === "ce"){
+      result = result.slice(0, -1);
+    } else if (val === "equal"){
+      var actualOP = parseInt(result);
+      result = actualOP;
+    } else if(val === "ans") { result = "dont know" }
+    display(result);
   });
 
-  var html = "<p>" + input + "</p>";
-  $(".displayResult").html(html);
-}
+  display(result);
+  result = "";
+});
