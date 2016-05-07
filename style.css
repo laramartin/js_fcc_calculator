@@ -1,11 +1,13 @@
 #calculator{
   background-color: #F5A9A9;
-  width: 340px;
+  width: 300px;
   border-top: solid;
   border-bottom: solid;
-  margin: 0 auto;
+  margin: auto;
   text-align: center;
+  padding: 5px 15px 10px 15px;
 }
+
 
 .buttons {
     background-color: #81F79F;
@@ -13,22 +15,20 @@
     color: black;
     padding: 5px;
     height: 50px;
-    width: 50px;
+    width: 55px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    /*display: inline-block;*/
     font-size: 16px;
-    margin: 2px ;
+    margin: 2px 0px 2px 0px;
 }
 
 #result{
     height: 50px;
-    width: 300px;
-    margin: 10px;
     padding-top: 15px;
     padding-right: 10px;
+    margin: 15px 0px 5px 0px;
     text-align: right;
     background-color: #F781D8;
     font-size: 20px;
-
 }

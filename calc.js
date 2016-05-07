@@ -30,7 +30,10 @@ $(document).ready(function() {
         inputArray.push(inputUser);
         inputArray.push(actualOP);
         inputUser = "";
-      } else if(val === "ac"){
+      /*} else if (val === "dot"){
+        inputUser = inputUser.concat(String(val));
+        displayCalculator(inputUser);*/
+      }else if(val === "ac"){
         result = "";
         actualOP = "";
         inputUser = "";
