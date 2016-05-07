@@ -24,6 +24,14 @@ $(document).ready(function() {
     if (!isNaN(val)) {
       inputUser = inputUser.concat(String(val));
       displayCalculator(inputUser);
+    } else if(val === "ac"){
+      result = "";
+      actualOP = "";
+      inputUser = "";
+      inputArray = [];
+      showDisplay = "";
+      strOP = "";
+      displayCalculator(inputUser);
     } else if (inputUser !== "") {
       if (val in operations) {
         actualOP = operations[val];
@@ -33,16 +41,9 @@ $(document).ready(function() {
       /*} else if (val === "dot"){
         inputUser = inputUser.concat(String(val));
         displayCalculator(inputUser);*/
-      }else if(val === "ac"){
-        result = "";
-        actualOP = "";
-        inputUser = "";
-        inputArray = [];
-        showDisplay = "";
-        strOP = "";
-        displayCalculator(inputUser);
       } else if (val === "ce"){
         inputUser = inputUser.slice(0, -1);
+        displayCalculator(inputUser);
       } else if (val === "equal"){
         inputArray.push(inputUser);
         strOP = inputArray.join(" ");
@@ -52,6 +53,7 @@ $(document).ready(function() {
         displayCalculator(showDisplay);
         actualOP === "";
         inputArray = [];
+        inputUser = "";
       } else if(val === "ans") { result = "dont know" }
     }
 
