@@ -1,16 +1,18 @@
 var result = "";
-var str1 = result;
-//var empty = "0";
-
+var actualOP = "";
+var inputUser = "";
+var inputArray = [];
+var showDisplay = "";
+var strOP = "";
 var operations = {
   "dot": ".", "percent": "%", "multp": "*", "divide": "/", "minus": "-", "plus": "+"
 }
 
 $(document).ready(function() {
 
-  function display(input){
-    console.log("result: " + result);
-    var html = "<p>" + result + "</p>";
+  function displayCalculator(input){
+    console.log("result: " + input);
+    var html = "<p>" + input + "</p>";
     $(".displayResult").html(html);
   }
 
@@ -18,21 +20,45 @@ $(document).ready(function() {
     var val = $(this).attr("value");
     //val = String(val);
     console.log("val: " + val);
-    if (!isNaN(val)){
-      result = result.concat(String(val));
-    } else if (val in operations) {
-      result = result.concat(operations[val]);
-    } else if(val === "ac"){
-      result = "";
-    } else if (val === "ce"){
-      result = result.slice(0, -1);
-    } else if (val === "equal"){
-      var actualOP = parseInt(result);
-      result = actualOP;
-    } else if(val === "ans") { result = "dont know" }
-    display(result);
-  });
 
-  display(result);
+    if (!isNaN(val)) {
+      inputUser = inputUser.concat(String(val));
+      displayCalculator(inputUser);
+    } else if (inputUser !== "") {
+      if (val in operations) {
+        actualOP = operations[val];
+        inputArray.push(inputUser);
+        inputArray.push(actualOP);
+        inputUser = "";
+      } else if(val === "ac"){
+        result = "";
+        actualOP = "";
+        inputUser = "";
+        inputArray = [];
+        showDisplay = "";
+        strOP = "";
+        displayCalculator(inputUser);
+      } else if (val === "ce"){
+        inputUser = inputUser.slice(0, -1);
+      } else if (val === "equal"){
+        inputArray.push(inputUser);
+        strOP = inputArray.join(" ");
+        showDisplay = eval(strOP);
+        console.log("strOP: " + strOP);
+        console.log("showDisplay: " + showDisplay);
+        displayCalculator(showDisplay);
+        actualOP === "";
+        inputArray = [];
+      } else if(val === "ans") { result = "dont know" }
+    }
+
+    console.log("inputUser: " + inputUser);
+    strOP === ""
+    console.log("inputArray: " + inputArray);
+  });
+/*
   result = "";
+  actualOP = "";
+  inputUser = "";
+  inputArray = [];*/
 });
